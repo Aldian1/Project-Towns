@@ -1,0 +1,245 @@
+fileFormatVersion: 2
+guid: 32a2a3854332157459f6aec3add45d84
+timeCreated: 1447763187
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: alpaca
+    100002: //RootNode
+    100004: Armature
+    100006: calf.L
+    100008: calf.R
+    100010: cog
+    100012: foot.L
+    100014: foot.L_end
+    100016: foot.R
+    100018: foot.R_end
+    100020: footIK.L
+    100022: footIK.L_end
+    100024: footIK.R
+    100026: footIK.R_end
+    100028: forearm.L
+    100030: forearm.L_end
+    100032: forearm.R
+    100034: forearm.R_end
+    100036: forearmIK.L
+    100038: forearmIK.L_end
+    100040: forearmIK.R
+    100042: forearmIK.R_end
+    100044: hair
+    100046: hair_end
+    100048: head
+    100050: hips
+    100052: master
+    100054: neck1
+    100056: neck2
+    100058: ribs
+    100060: tail
+    100062: tail_end
+    100064: thigh.L
+    100066: thigh.R
+    100068: upperarm.L
+    100070: upperarm.R
+    400000: alpaca
+    400002: //RootNode
+    400004: Armature
+    400006: calf.L
+    400008: calf.R
+    400010: cog
+    400012: foot.L
+    400014: foot.L_end
+    400016: foot.R
+    400018: foot.R_end
+    400020: footIK.L
+    400022: footIK.L_end
+    400024: footIK.R
+    400026: footIK.R_end
+    400028: forearm.L
+    400030: forearm.L_end
+    400032: forearm.R
+    400034: forearm.R_end
+    400036: forearmIK.L
+    400038: forearmIK.L_end
+    400040: forearmIK.R
+    400042: forearmIK.R_end
+    400044: hair
+    400046: hair_end
+    400048: head
+    400050: hips
+    400052: master
+    400054: neck1
+    400056: neck2
+    400058: ribs
+    400060: tail
+    400062: tail_end
+    400064: thigh.L
+    400066: thigh.R
+    400068: upperarm.L
+    400070: upperarm.R
+    4300000: alpaca
+    7400000: Armature|alpaca_anim
+    9500000: //RootNode
+    13700000: alpaca
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|alpaca_anim
+      takeName: Armature|alpaca_anim
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: alpaca
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/master
+        weight: 1
+      - path: Armature/master/cog
+        weight: 1
+      - path: Armature/master/cog/hips
+        weight: 1
+      - path: Armature/master/cog/hips/tail
+        weight: 1
+      - path: Armature/master/cog/hips/tail/tail_end
+        weight: 1
+      - path: Armature/master/cog/hips/thigh.L
+        weight: 1
+      - path: Armature/master/cog/hips/thigh.L/calf.L
+        weight: 1
+      - path: Armature/master/cog/hips/thigh.L/calf.L/foot.L
+        weight: 1
+      - path: Armature/master/cog/hips/thigh.L/calf.L/foot.L/foot.L_end
+        weight: 1
+      - path: Armature/master/cog/hips/thigh.R
+        weight: 1
+      - path: Armature/master/cog/hips/thigh.R/calf.R
+        weight: 1
+      - path: Armature/master/cog/hips/thigh.R/calf.R/foot.R
+        weight: 1
+      - path: Armature/master/cog/hips/thigh.R/calf.R/foot.R/foot.R_end
+        weight: 1
+      - path: Armature/master/cog/ribs
+        weight: 1
+      - path: Armature/master/cog/ribs/neck1
+        weight: 1
+      - path: Armature/master/cog/ribs/neck1/neck2
+        weight: 1
+      - path: Armature/master/cog/ribs/neck1/neck2/head
+        weight: 1
+      - path: Armature/master/cog/ribs/neck1/neck2/head/hair
+        weight: 1
+      - path: Armature/master/cog/ribs/neck1/neck2/head/hair/hair_end
+        weight: 1
+      - path: Armature/master/cog/ribs/upperarm.L
+        weight: 1
+      - path: Armature/master/cog/ribs/upperarm.L/forearm.L
+        weight: 1
+      - path: Armature/master/cog/ribs/upperarm.L/forearm.L/forearm.L_end
+        weight: 1
+      - path: Armature/master/cog/ribs/upperarm.R
+        weight: 1
+      - path: Armature/master/cog/ribs/upperarm.R/forearm.R
+        weight: 1
+      - path: Armature/master/cog/ribs/upperarm.R/forearm.R/forearm.R_end
+        weight: 1
+      - path: Armature/master/footIK.L
+        weight: 1
+      - path: Armature/master/footIK.L/footIK.L_end
+        weight: 1
+      - path: Armature/master/footIK.R
+        weight: 1
+      - path: Armature/master/footIK.R/footIK.R_end
+        weight: 1
+      - path: Armature/master/forearmIK.L
+        weight: 1
+      - path: Armature/master/forearmIK.L/forearmIK.L_end
+        weight: 1
+      - path: Armature/master/forearmIK.R
+        weight: 1
+      - path: Armature/master/forearmIK.R/forearmIK.R_end
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -39,51 +39,56 @@ public class fishinghole : MonoBehaviour {
         Player = GameObject.FindGameObjectWithTag("Player");
         jsanim = Player.GetComponent("Character_Animations") as MonoBehaviour;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            inv.AddItem(ItemDB.ItemList[6], 5);
 
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (playerhere)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                inv.AddItem(ItemDB.ItemList[6], 5);
+
+            }
+            if (gamerun)
+            {
+                FishingGame();
+            }
+            if (gamerun == false)
+            {
+
+                jsanim.enabled = true;
+
+                CurrentFishCaught = 0;
+                currentlevel = 50;
+                CanvasHolder.SetActive(false);
+                speed = 10;
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && switcher == 0 && playerhere)
+            {
+
+                gamerun = true;
+                switcher = 1;
+                jsanim.enabled = false;
+                CanvasHolder.SetActive(true);
+                return;
+
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && switcher == 1)
+            {
+                gamerun = false;
+                switcher = 0;
+                jsanim.enabled = true;
+                CanvasHolder.SetActive(false);
+                CurrentFishCaught = 0;
+                return;
+            }
         }
-        if(gamerun)
-        {
-            FishingGame();
-        }
-        if(gamerun == false)
-        {
 
-            jsanim.enabled = true;
-           
-            CurrentFishCaught = 0;
-            currentlevel = 50;
-            CanvasHolder.SetActive(false);
-            speed = 10;
-
-        }
-
-	if(Input.GetKeyDown(KeyCode.E) && switcher == 0 && playerhere)
-        {
-
-            gamerun = true;
-            switcher = 1;
-            jsanim.enabled = false;
-            CanvasHolder.SetActive(true);
-            return;
-
-        }else if(Input.GetKeyDown(KeyCode.E) && switcher == 1)
-        {
-            gamerun = false;
-            switcher = 0;
-            jsanim.enabled = true;
-            CanvasHolder.SetActive(false);
-            CurrentFishCaught = 0;
-            return;
-        }
-	}
-
-
+    }
     void OnTriggerEnter(Collider other)
     {
         Player.GetComponent<controller_>().fishingtooltip.SetActive(true);

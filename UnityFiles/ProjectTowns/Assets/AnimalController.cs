@@ -26,7 +26,7 @@ public class AnimalController : MonoBehaviour {
 	void Update () {
 	if(State == state.straightmovement)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * speed);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
 
         }
 	}
