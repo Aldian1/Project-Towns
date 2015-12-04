@@ -1,135 +1,97 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Pathfinding;
-using System.Collections.Generic;
 
-public class BasicUnitControl : MonoBehaviour {
+public class BasicUnitControl : MonoBehaviour
+{
 
-    public List<GameObject> Inventory = new List<GameObject>();
-    public List<Transform> StoredLocations = new List<Transform>();
-	public Transform target;
-    public GameObject log;
+    public Transform target;
+    public Vector3 targetPosition;
 
-	Seeker seeker;
+    private Seeker seeker;
+    private CharacterController controller;
 
-	public Path path;
+    //The calculated path
+    public Path path;
 
-	int currentWaypoint;
+    //The AI's speed per second
+    public float speed = 100;
 
-	public float speed;
+    //The max distance from the AI to a waypoint for it to continue to the next waypoint
+    public float nextWaypointDistance = 3;
 
-	public float rotatespeed;
-	CharacterController charactercontroller;
+    //The waypoint we are currently moving towards
+    private int currentWaypoint = 0;
 
-	float waypointdistance = 2F;
+    public GameObject[] VillageObjects;
 
-	public float nextWaypointDistance = 3;
+    public VillageBuilder builder;
 
-	private Animator animator_;
+    public AstarPath astar;
 
-    private bool newtargetactive;
 
-    public enum targetType
+    public void StartPath()
     {
-       Tree,
-       Building
+        targetPosition = target.transform.position;
+        //Get a reference to the Seeker component we added earlier
+        seeker = GetComponent<Seeker>();
+        controller = GetComponent<CharacterController>();
 
 
-    };
+        //Start a new path to the targetPosition, return the result to the OnPathComplete function
+        seeker.StartPath(transform.position, targetPosition, OnPathComplete);
+    }
 
-    public targetType TargetType;
-
-	public void Start () {
-
-		animator_ = this.GetComponent<Animator>();
-		//Get a reference to the Seeker component we added earlier
-		Seeker seeker = GetComponent<Seeker>();
-		//Start a new path to the targetPosition, return the result to the OnPathComplete function
-		seeker.StartPath (transform.position,target.transform.position, OnPathComplete);
-
-		charactercontroller = this.GetComponent<CharacterController>();
-	}
-	public void OnPathComplete (Path p) {
-		Debug.Log ("Yay, we got a path back. Did it have an error? "+p.error);
-
-		animator_.SetFloat("Walk", 1);
-
-		if (!p.error) {
+    public void OnPathComplete(Path p)
+    {
+        //Debug.Log ("Yey, we got a path back. Did it have an error? "+p.error);
+        if (!p.error)
+        {
+            path = p;
             //Reset the waypoint counter
             currentWaypoint = 0;
-            path = p;
+        }
+    }
 
-		}
-	}
-	public void Update () {
-		if(target)
-		{
-			Vector3 targetDir = target.position - transform.position;
-			float step = rotatespeed * Time.deltaTime;
-			Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
-			Debug.DrawRay(transform.position, newDir, Color.red);
-			transform.rotation = Quaternion.LookRotation(newDir);
-		}
+    public void FixedUpdate()
+    {
 
-		if (path == null) {
-			//We have no path to move after yet
-			return;
-		}
-
-        if (newtargetactive == false)
+        if (target != null)
         {
-            if (currentWaypoint >= path.vectorPath.Count)
+
+            if (path == null)
             {
-                //Debug.Log ("End Of Path Reached");
-                //reached the end of path
-                animator_.SetFloat("Walk", 0);
-                newTarget();
+                //We have no path to move after yet
+                return;
+            }
+
+            if (currentWaypoint >= path.vectorPath.Count && target != null)
+            {
+                Debug.Log("End Of Path Reached");
+                if (target.tag == "Tent")
+                {
+                    Instantiate(VillageObjects[0], target.transform.position, target.transform.rotation);
+                    builder.needbuilding.Remove(builder.needbuilding[0]);
+                    astar.Scan();
+                    Destroy(target.gameObject);
+                }
+                target = null;
+                return;
+            }
+
+            //Direction to the next waypoint
+            Vector3 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
+            dir *= speed * Time.fixedDeltaTime;
+            controller.Move(dir);
+
+            //Check if we are close enough to the next waypoint
+            //If we are, proceed to follow the next waypoint
+            if (Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]) < nextWaypointDistance)
+            {
+                currentWaypoint++;
                 return;
             }
         }
-		//Direction to the next waypoint
-		Vector3 dir = (path.vectorPath[currentWaypoint]-transform.position).normalized;
-		dir *= speed * Time.deltaTime;
-		charactercontroller.SimpleMove (dir);
-		//Check if we are close enough to the next waypoint
-		//If we are, proceed to follow the next waypoint
-		if (Vector3.Distance (transform.position,path.vectorPath[currentWaypoint]) < nextWaypointDistance) {
-			currentWaypoint++;
-			return;
-		}
-	}
-
-    void newTarget()
-    {
-        newtargetactive = true;
-
-        if (TargetType == targetType.Building)
-        {
-            GameObject spawn;
-            spawn = target.gameObject;
-            Instantiate(log, new Vector3(spawn.transform.position.x + 3, spawn.transform.position.y + 3,spawn.transform.position.z), spawn.transform.rotation);
-            Inventory.Remove(Inventory[0]);
-            target = null;
-        }
-
-
-        if (TargetType == targetType.Tree)
-        {
-            Destroy(target.gameObject);
-            Inventory.Add(log);
-            target = StoredLocations[0];
-            TargetType = targetType.Building;
-            AstarPath.active.Scan();
-        }
-        
-
-        if (target)
-        {
-            Seeker seeker = GetComponent<Seeker>();
-            Debug.Log("Done");
-
-            seeker.StartPath(transform.position, target.transform.position, OnPathComplete);
-            newtargetactive = false;
-        }
     }
+
 }
