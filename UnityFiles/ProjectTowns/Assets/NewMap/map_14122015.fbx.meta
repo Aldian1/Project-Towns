@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 36898c7590a04564cb62a78e70c9cbfd
+timeCreated: 1451739528
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: jump_puzzle
+    100002: //RootNode
+    100004: map_3
+    400000: jump_puzzle
+    400002: //RootNode
+    400004: map_3
+    2300000: jump_puzzle
+    2300002: map_3
+    3300000: jump_puzzle
+    3300002: map_3
+    4300000: jump_puzzle
+    4300002: map_3
+    6400000: jump_puzzle
+    6400002: map_3
+    7400000: jump_puzzle|Armature.001Action
+    7400002: jump_puzzle|Armature.001Action.004
+    7400004: jump_puzzle|Armature.001Action.005
+    7400006: jump_puzzle|Armature.001Action.006
+    7400008: jump_puzzle|Armature.001Action.007
+    7400010: jump_puzzle|Armature.001Action.008
+    7400012: jump_puzzle|Armature.001Action.009
+    7400014: jump_puzzle|CubeAction
+    7400016: jump_puzzle|map_3Action
+    7400018: jump_puzzle|map_3Action.001
+    7400020: jump_puzzle|map_3Action.002
+    7400022: jump_puzzle|map_3Action.003
+    7400024: jump_puzzle|map_3Action.004
+    7400026: jump_puzzle|map_3Action.005
+    7400028: jump_puzzle|map_3Action.006
+    7400030: jump_puzzle|map_3Action.007
+    7400032: jump_puzzle|map_3Action.008
+    7400034: jump_puzzle|map_3Action.009
+    7400036: jump_puzzle|map_3Action.010
+    7400038: jump_puzzle|map_5.000Action
+    7400040: jump_puzzle|map_5.003Action
+    7400042: jump_puzzle|map_9.001Action
+    7400044: jump_puzzle|Plane.001Action
+    7400046: jump_puzzle|Plane.001Action.003
+    7400048: jump_puzzle|Plane.001Action.006
+    7400050: jump_puzzle|Plane.001Action.007
+    7400052: jump_puzzle|Plane.005Action.001
+    7400054: jump_puzzle|PlaneAction
+    7400056: jump_puzzle|PlaneAction.002
+    7400058: jump_puzzle|thorn_branch.007Action
+    7400060: map_3|Armature.001Action
+    7400062: map_3|Armature.001Action.004
+    7400064: map_3|Armature.001Action.005
+    7400066: map_3|Armature.001Action.006
+    7400068: map_3|Armature.001Action.007
+    7400070: map_3|Armature.001Action.008
+    7400072: map_3|Armature.001Action.009
+    7400074: map_3|CubeAction
+    7400076: map_3|map_3Action
+    7400078: map_3|map_3Action.001
+    7400080: map_3|map_3Action.002
+    7400082: map_3|map_3Action.003
+    7400084: map_3|map_3Action.004
+    7400086: map_3|map_3Action.005
+    7400088: map_3|map_3Action.006
+    7400090: map_3|map_3Action.007
+    7400092: map_3|map_3Action.008
+    7400094: map_3|map_3Action.009
+    7400096: map_3|map_3Action.010
+    7400098: map_3|map_5.000Action
+    7400100: map_3|map_5.003Action
+    7400102: map_3|map_9.001Action
+    7400104: map_3|Plane.001Action
+    7400106: map_3|Plane.001Action.003
+    7400108: map_3|Plane.001Action.006
+    7400110: map_3|Plane.001Action.007
+    7400112: map_3|Plane.005Action.001
+    7400114: map_3|PlaneAction
+    7400116: map_3|PlaneAction.002
+    7400118: map_3|thorn_branch.007Action
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

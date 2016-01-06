@@ -48,7 +48,7 @@ public class DevConsole : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Return) && switcher == 0)
         {
 
-
+   
             string tobesplit = inputfield.GetComponent<Text>().text;
 
             string[] split = tobesplit.Split(null);
@@ -64,6 +64,20 @@ public class DevConsole : MonoBehaviour {
 
     void RunCommand(string command,string item)
     {
+        #region hannahEasterEgg
+
+        if(command == "Hannah")
+        {
+            Debug.Log(item);
+            inv.AddItem(ItemDB.ItemList[0], 10);
+            inv.AddItem(ItemDB.ItemList[1], 10);
+            inv.AddItem(ItemDB.ItemList[2], 10);
+            inv.AddItem(ItemDB.ItemList[3], 10);
+          
+
+            return;
+        }
+        #endregion
 
         #region tpcommand
 
