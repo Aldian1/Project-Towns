@@ -85,6 +85,10 @@ public class ItemDB : MonoBehaviour {
         i6.maxstack = 26;
         ItemList.Add(i6);
 
+
+        //
+        Item i7 = new Item();
+   
         #endregion
         itemcopy = ItemList;
 

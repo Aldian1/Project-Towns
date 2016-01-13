@@ -46,11 +46,7 @@ public class fishinghole : MonoBehaviour {
 
         if (playerhere)
         {
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                inv.AddItem(ItemDB.ItemList[6], 5);
-
-            }
+            
             if (gamerun)
             {
                 FishingGame();
@@ -59,7 +55,7 @@ public class fishinghole : MonoBehaviour {
             {
 
                 jsanim.enabled = true;
-
+                
                 CurrentFishCaught = 0;
                 currentlevel = 50;
                 CanvasHolder.SetActive(false);
@@ -106,6 +102,8 @@ public class fishinghole : MonoBehaviour {
 
     public void FishingGame()
     {
+        
+
         if(CurrentFishCaught == 5)
         {
           

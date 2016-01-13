@@ -29,7 +29,13 @@ public class BasicUnitControl : MonoBehaviour
 
     public AstarPath astar;
 
+    public Character_Animations anims;
 
+    public void Start()
+    {
+
+
+    }
     public void StartPath()
     {
         targetPosition = target.transform.position;
@@ -37,7 +43,7 @@ public class BasicUnitControl : MonoBehaviour
         seeker = GetComponent<Seeker>();
         controller = GetComponent<CharacterController>();
 
-
+        anims.v = 5;
         //Start a new path to the targetPosition, return the result to the OnPathComplete function
         seeker.StartPath(transform.position, targetPosition, OnPathComplete);
     }
@@ -55,7 +61,11 @@ public class BasicUnitControl : MonoBehaviour
 
     public void FixedUpdate()
     {
-
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            StartPath();
+            return;
+        }
         if (target != null)
         {
 
@@ -65,9 +75,10 @@ public class BasicUnitControl : MonoBehaviour
                 return;
             }
 
-            if (currentWaypoint >= path.vectorPath.Count && target != null)
+            if (currentWaypoint >= path.vectorPath.Count - 1F && target != null)
             {
                 Debug.Log("End Of Path Reached");
+                anims.v = 0;
                 if (target.tag == "Tent")
                 {
                     Instantiate(VillageObjects[0], target.transform.position, target.transform.rotation);
