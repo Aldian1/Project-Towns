@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 6e25613b1fc2cd94b8cc2b9d376991a7
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 19
   fileIDToRecycleName:
     100000: SnowTree
     100002: SnowTree_001
@@ -124,6 +124,7 @@ ModelImporter:
     2300072: SnowTree_037
     2300074: SnowTree_038
     2300076: SnowTree_039
+    2300078: SnowTree
     3300000: SnowTree_001
     3300002: SnowTree_002
     3300004: SnowTree_003
@@ -163,6 +164,7 @@ ModelImporter:
     3300072: SnowTree_037
     3300074: SnowTree_038
     3300076: SnowTree_039
+    3300078: SnowTree
     4300000: SnowTree_001
     4300002: SnowTree_002
     4300004: SnowTree_003
@@ -202,6 +204,7 @@ ModelImporter:
     4300072: SnowTree_037
     4300074: SnowTree_038
     4300076: SnowTree_039
+    4300078: SnowTree
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -210,6 +213,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -217,9 +221,9 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
@@ -243,24 +247,25 @@ ModelImporter:
     useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
