@@ -79,7 +79,7 @@ public class controller_ : MonoBehaviour {
 
         }else if(Input.GetKeyUp(KeyCode.E) || enteredresource == false)
         {
-            this.GetComponentInChildren<Image>().fillAmount = 0;
+            //this.GetComponentInChildren<Image>().fillAmount = 0;
         }
         
 	}

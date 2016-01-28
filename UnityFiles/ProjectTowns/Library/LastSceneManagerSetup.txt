@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/AI_Lizardmen_TestLab.unity
+- path: Assets/Scenes/TestlabInventory.unity
   isLoaded: 1
   isActive: 1

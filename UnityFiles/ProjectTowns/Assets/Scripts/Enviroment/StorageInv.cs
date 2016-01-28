@@ -22,13 +22,13 @@ public class StorageInv : MonoBehaviour
 
     private void Start()
     {
-        this.maincanvas.SetActive(false);
+        //this.maincanvas.SetActive(false);
     }
 
     private void Update()
     {
-        this.villageoverlaystone.GetComponent<Text>().text = "Stone: " + this.stone.ToString();
-        this.villageoverlaywood.GetComponent<Text>().text = "Wood: " + this.wood.ToString();
+        //this.villageoverlaystone.GetComponent<Text>().text = "Stone: " + this.stone.ToString();
+        //this.villageoverlaywood.GetComponent<Text>().text = "Wood: " + this.wood.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
