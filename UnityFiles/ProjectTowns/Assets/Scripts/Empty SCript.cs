@@ -5,7 +5,9 @@ public class EmptySCript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	Debug.log("Hi Stefan");
+
+	Debug.Log("Hi Stefan");
+
 	}
 	
 	// Update is called once per frame
