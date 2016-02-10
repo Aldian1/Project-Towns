@@ -1607,6 +1607,7 @@ ModelImporter:
     4300302: House_003
     4300304: House_002
     4300306: House_001
+    4300308: House
     4300310: Snowman
     4300312: Fence_005
     4300314: Fence_004
@@ -1811,8 +1812,10 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

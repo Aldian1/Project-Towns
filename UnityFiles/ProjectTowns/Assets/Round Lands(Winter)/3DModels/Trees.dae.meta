@@ -124,6 +124,7 @@ ModelImporter:
     2300072: Tree_037
     2300074: Tree_038
     2300076: Tree_039
+    2300078: Tree_021
     3300000: Tree
     3300002: Tree_001
     3300004: Tree_002
@@ -163,6 +164,7 @@ ModelImporter:
     3300072: Tree_037
     3300074: Tree_038
     3300076: Tree_039
+    3300078: Tree_021
     4300000: Tree
     4300002: Tree_001
     4300004: Tree_002
@@ -202,6 +204,7 @@ ModelImporter:
     4300072: Tree_037
     4300074: Tree_038
     4300076: Tree_039
+    4300078: Tree_021
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -259,8 +262,10 @@ ModelImporter:
     legStretch: .0500000007
     feetSpacing: 0
     rootMotionBoneName: 
+    hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
+  humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
