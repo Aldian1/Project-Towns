@@ -33,7 +33,6 @@ public class ResourceDetector : MonoBehaviour {
     void OnTriggerExit(Collider other)
     {
         player.GetComponent<controller_>().enteredresource = false;
-
       
         player.GetComponent<controller_>().yieldparam = 0;
         player.GetComponent<controller_>().creationparam = 0;

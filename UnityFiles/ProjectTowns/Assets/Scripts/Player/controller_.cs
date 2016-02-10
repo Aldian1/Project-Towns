@@ -33,46 +33,48 @@ public class controller_ : MonoBehaviour {
 
     void Awake()
     {
-        canvas.SetActive(true);
+        //canvas.SetActive(true);
 
     }
 	// Use this for initialization
 	void Start () {
-        canvas.SetActive(false);
+        //canvas.SetActive(false);
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-	if(Input.GetKeyDown(KeyCode.I))
-        {
-        
-            if(switcher == 0)
-            {
-                canvas.SetActive(true);
-                switcher = 1;
-                return;
-            }
-
-            if (switcher == 1)
-            {
-                canvas.SetActive(false);
-                switcher = 0;
-                return;
-            }
-
-        }
+	//   if(Input.GetKeyDown(KeyCode.I))
+    //   {
+    //   
+    //        if(switcher == 0)
+    //        {
+    //            canvas.SetActive(true);
+    //            switcher = 1;
+    //            gameObject.GetComponent<Character_Animations>().enabled = false;
+    //            return;
+    //        }
+    //
+    //        if (switcher == 1)
+    //        {
+    //            canvas.SetActive(false);
+    //            switcher = 0;
+    //            gameObject.GetComponent<Character_Animations>().enabled = true;
+    //            return;
+    //        }
+    //
+    //    }
 
     if(enteredresource == true)
         {
-            tooltip.SetActive(true);
+            //tooltip.SetActive(true);
 
         }else
         {
-            tooltip.SetActive(false);
+            //tooltip.SetActive(false);
         }
 
-    if(Input.GetKey(KeyCode.E) && enteredresource == true)
+        if(Input.GetKey(KeyCode.E) && enteredresource == true)
         {
             //passing exterior script params to function
             Resource(creationparam,Itemdbparam,yieldparam);

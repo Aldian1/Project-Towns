@@ -33,6 +33,7 @@ public class StorageInv : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Entered storage");
         this.StoneId.GetComponent<Text>().text = this.stone.ToString();
         this.WoodID.GetComponent<Text>().text = this.wood.ToString();
         this.maincanvas.SetActive(true);

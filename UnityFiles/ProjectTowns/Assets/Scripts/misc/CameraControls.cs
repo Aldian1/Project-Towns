@@ -39,13 +39,7 @@ public class CameraControls : MonoBehaviour
 	
 	public void Init()
 	{
-		//If there is no target, create a temporary target at 'distance' from the cameras current viewpoint
-		if (!target)
-		{
-			GameObject go = new GameObject("Cam Target");
-			go.transform.position = transform.position + (transform.forward * distance);
-			target = go.transform;
-		}
+        target = this.GetComponent<_CameraController>().testLookatPosition.transform;
 		
 		distance = Vector3.Distance(transform.position, target.position);
 		currentDistance = distance;

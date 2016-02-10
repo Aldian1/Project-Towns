@@ -14,12 +14,6 @@ public class DevConsole : MonoBehaviour {
     public GameObject maincanvas, inputfield, mainconsole;
 
     public InventoryController inv;
-    // Use this for initialization
-    void Start () {
-
-        
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {

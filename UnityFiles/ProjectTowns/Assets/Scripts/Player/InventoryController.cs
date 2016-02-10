@@ -12,60 +12,56 @@ using System.Linq;
 public class InventoryController : MonoBehaviour {
 
     public Transform selecteditem, selectedSlot, OriginalSlot;
-
     public GameObject slotprefab, itemprefab;
-
     public Vector2 inventorysize = new Vector2(3,6);
-
     public float slotsize;
-
     public Vector2 windowSize;
-
     public GameObject[] slots;
-
     public List<Item> items = new List<Item>();
-
     public List<int> amountofitems = new List<int>();
-
     public bool candragitem;
-
     public int invamount;
 
-    public GameObject tooltip;
+    private GameObject tooltipObject;
+    private GameObject tooltipDescription;
 
 
     // Use this for initialization
-    void Start () {
-       
-	}
+    void Awake ()
+    {
+        tooltipObject = transform.Find("Panel").Find("Highlighted").gameObject;
+        tooltipDescription = transform.Find("Panel").Find("Description").gameObject;
+
+    }
 	
 	// Update is called once per frame
-	void Update () {
-
-        //tool tip description set
-	if(selecteditem != null)
+	void Update ()
+    {
+        #region Tool tip description set
+        if(selecteditem != null)
         {
-            tooltip.GetComponent<Text>().text = selecteditem.GetComponent<Item>().description;
+            tooltipObject.GetComponent<Text>().text = selecteditem.GetComponent<Item>().name;
+            tooltipDescription.GetComponent<Text>().text = selecteditem.GetComponent<Item>().description;
         }
         else
         {
-            tooltip.GetComponent<Text>().text = "";
-
+            tooltipObject.GetComponent<Text>().text = "";
+            tooltipDescription.GetComponent<Text>().text = "";
         }
+        #endregion
 
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             SetItemColliders(false);
 
-            if (selecteditem == null)
-            { }
-            else
+            if (selecteditem != null)
             {
                 candragitem = true;
                 OriginalSlot = selecteditem.parent;
                 selecteditem.position = Input.mousePosition;
                 selecteditem.GetComponent<CanvasGroup>().blocksRaycasts = false;
             }
+
         }
         else if (Input.GetMouseButtonUp(0))
         {
@@ -76,26 +72,24 @@ public class InventoryController : MonoBehaviour {
             }
             candragitem = false;
 
-            if (selecteditem == null)
-            { }
-            else
+            if (selecteditem != null)
             {
-                    //if the slot target slot is null then we can place the item in its original slot i.e off screen drag
-                    if (selectedSlot == null)
-                     {
+                //if the slot target slot is null then we can place the item in its original slot i.e off screen drag
+                if (selectedSlot == null)
+                {
                     selecteditem.parent = OriginalSlot;
                     selecteditem.localPosition = Vector3.zero;
-                     }
-                   //if the target slot has no children (other items) then we place the item here (also checks if item stack is avaliable)
-                    if (selectedSlot.childCount == 0)
-                    {
-                        selecteditem.parent = selectedSlot;
-                        selecteditem.localPosition = Vector3.zero;
-                    }
-                    //else if the selected slot has a child and its not stackable then this if statement returns the item to original slot
-                    else if(selectedSlot.childCount > 0)
-                    {
-                    if (selectedSlot.GetComponentInChildren<Item>().Name == selecteditem.GetComponent<Item>().Name)
+                }
+                //if the target slot has no children (other items) then we place the item here (also checks if item stack is avaliable)
+                if (selectedSlot.childCount == 0)
+                {
+                    selecteditem.parent = selectedSlot;
+                    selecteditem.localPosition = Vector3.zero;
+                }
+                //else if the selected slot has a child and its not stackable then this if statement returns the item to original slot
+                else if (selectedSlot.childCount > 0)
+                {
+                    if (selectedSlot.GetComponentInChildren<Item>().name == selecteditem.GetComponent<Item>().name)
                     {
                         //if the the selected item is the same name as the present item then we add to the stack unless the stack is already at its max!
                         //we get the item amount from both add it to the present item in slot and delete the dragged one
@@ -109,13 +103,13 @@ public class InventoryController : MonoBehaviour {
 
                         //converts string into int and then checks this against current amount in slot
                         string selectedslotdata = selectedSlot.GetComponentInChildren<Text>().text;
-                        char[] chartobedelete = { 'x'};
+                        char[] chartobedelete = { 'x' };
 
                         string amounttext_ = selectedslotdata.TrimStart(chartobedelete);
-                      
+
                         int currentamountinslot = Int32.Parse(amounttext_);
 
-                        
+
                         if (selectedSlot.childCount > 1 && currentamountinslot < selectedSlot.GetComponentInChildren<Item>().maxstack)
                         {
                             selectedSlot.GetComponentInChildren<Item>().amount += selecteditem.GetComponent<Item>().amount;
@@ -135,13 +129,13 @@ public class InventoryController : MonoBehaviour {
                         selecteditem.parent = OriginalSlot;
                         selecteditem.localPosition = Vector3.zero;
                     }
-                    }
-
                 }
 
-                selecteditem = null;
             }
+
+            selecteditem = null;
         }
+    }
 
 	
     //takes the items from a AddItem Call and takes the item + amount
@@ -158,8 +152,8 @@ public class InventoryController : MonoBehaviour {
         ITEM.GetComponent<Item>().type = item.type;
         ITEM.GetComponent<Item>().sprite_ = item.sprite_;
         ITEM.GetComponent<Item>().amount = amount;
-        ITEM.GetComponent<Item>().name = item.Name;
-        ITEM.GetComponent<Item>().Name = item.Name;
+        ITEM.GetComponent<Item>().name = item.name;
+        ITEM.GetComponent<Item>().name = item.name;
         ITEM.GetComponent<Item>().stackable = item.stackable;
         ITEM.GetComponent<Item>().description = item.description;
         ITEM.GetComponent<Item>().maxstack = item.maxstack;
@@ -185,18 +179,12 @@ public class InventoryController : MonoBehaviour {
                 // 
                 return;
                 
-            }else if(invamount >= 24)
+            }
+            else if(invamount >= 24)
             {
                 Destroy(ITEM);
                 Debug.Log("Inv FUll so weve deleted the object");
-            }
-
-        
-
-
-
-
-
+            }   
         }
       
     }

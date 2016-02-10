@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Item : MonoBehaviour {
 
     //name of obj
-    public string Name;
+    public string name;
     //type of obj
     public enum Type { Equip, Consumable, Misc, Resource };
     //stackable or not
