@@ -3,6 +3,8 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Utility;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class PlayerController : MonoBehaviour
 
     public float thrust;
     public Rigidbody rb;
+
+    public GameObject maincamera;
+    public SmoothFollow smoothcamera;
 
     #endregion
 
@@ -45,11 +50,22 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region combatvariables
+    public bool incombat;
+    public GameObject currenttarget, oldtarget;
+    public float backthrust;
+
+    //holding all the ai that are within our target range
+    public List<Collider> lizardmen = new List<Collider>();
+    //Acts as a memory holder for what ai in the list we are on
+    
+    #endregion
 
     void Start()
     {
         animator = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
+        smoothcamera = maincamera.GetComponent<SmoothFollow>();
    
     }
 
@@ -57,7 +73,7 @@ public class PlayerController : MonoBehaviour
     {
         //Controls for player and animation setting
         PlayerControls();
-
+        Combat();
         //Calculates the arc for bow and arrow + other throwables
     
 
@@ -104,17 +120,33 @@ public class PlayerController : MonoBehaviour
 
             }
 
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D))
             {
                 //transform.Rotate(0, Time.deltaTime * rotatespeed, 0);
-                transform.Translate(Vector3.right * SideStepSpeed * Time.deltaTime);
+                //transform.Translate(Vector3.right * SideStepSpeed * Time.deltaTime);
+                if (rb.velocity.magnitude > 1)
+               {
+
+                }
+              else
+                {
+                    rb.AddForce(transform.right * SideStepSpeed);
+                }
 
             }
 
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.A))
             {
-                transform.Translate(Vector3.left * SideStepSpeed * Time.deltaTime);
+               if(rb.velocity.magnitude > 1)
+                {
 
+                }
+                else
+               {
+                   rb.AddForce(-transform.right * SideStepSpeed);
+                }
+                //  transform.Translate(Vector3.left * SideStepSpeed * Time.deltaTime);
+              
             }
 
             if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.W))
@@ -131,10 +163,43 @@ public class PlayerController : MonoBehaviour
 
 
             }
+
+            if(Input.GetKeyDown(KeyCode.S))
+            {
+                if (rb.velocity.magnitude > 1)
+                {
+
+                }
+                else
+                {
+                    rb.AddForce(-transform.forward * backthrust);
+                }
+
+            }
         }
     }
 
+    void Combat()
+    {
+        if(incombat)
+        {
+          //  smoothcamera.rotationDamping = 0;
+            transform.LookAt(currenttarget.transform);
+        }
+        else
+        {
+            //smoothcamera.rotationDamping = 3.5F;
 
+        }
+
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            //handles highlights target switching and entering combat
+            Target();
+
+        }
+
+    }
 
     void FixedUpdate()
     {
@@ -158,6 +223,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Target()
+    {
+   
+        incombat = true;
+        
+
+        //if our current taget is null or not their then we grab the first lizard men in the list and make them the default target
+        if(currenttarget == null)
+        {
+            currenttarget = lizardmen[0].gameObject;
+            oldtarget = currenttarget;
+        }
+        //else we go through the list and grab the next target making sure we dont grab the old one
+        else
+        {
+            foreach(Collider lizardmentarget in lizardmen)
+            {
+                if(lizardmentarget == currenttarget.GetComponent<Collider>() || lizardmentarget == oldtarget.GetComponent<Collider>())
+                {
+                    
+                }
+                else
+                {
+                   
+                    
+                    oldtarget = currenttarget;
+                    oldtarget.GetComponent<LizardMenController>().NotLockedon();
+                    currenttarget = lizardmentarget.gameObject;
+                    currenttarget.GetComponent<LizardMenController>().Lockedon();
+                
+                    return;
+                }
+
+            }
+        }
+
+        
+
+    }
+    
+    //Trajectory shizzle
   /* void simulatePath()
     {
         Vector3[] segments = new Vector3[segmentCount];
@@ -205,4 +311,27 @@ public class PlayerController : MonoBehaviour
             sightLine.SetPosition(i, segments[i]);
     }
     */
+
+    //checks if we already have it as a target
+    void OnTriggerEnter(Collider other)
+    {
+
+        Debug.Log("Collision");
+        if(!lizardmen.Contains(other) && other.tag == "Lizard")
+        {
+            lizardmen.Add(other);
+
+        }
+    }
+    //checks if we need to remove from list
+    void OnTriggerExit(Collider other)
+    {
+        if(lizardmen.Contains(other) && other.tag == "Lizard")
+        {
+            lizardmen.Remove(other);
+            incombat = false;
+
+        }
+
+    }
 }
